@@ -9,11 +9,21 @@ básicas.
 
 Utilice el archivo `data.csv` para resolver las preguntas.
 
-
 """
 
+import re
+
+
+def read_file():
+    data = open(".\data.csv", "r").readlines()
+    data = [line.replace("\n", "") for line in data]
+    #data = [line.replace("\t", ",") for line in data]
+    data = [line.split("\t") for line in data]
+    #data = [line.split(",") for line in data]
+    return data
 
 def pregunta_01():
+    data = read_file()
     """
     Retorne la suma de la segunda columna.
 
@@ -21,10 +31,13 @@ def pregunta_01():
     214
 
     """
-    return
+    sum=0
+    [sum:= sum + int(line[1]) for line in data]
+    return sum
 
 
 def pregunta_02():
+    data = read_file()
     """
     Retorne la cantidad de registros por cada letra de la primera columna como la lista
     de tuplas (letra, cantidad), ordendas alfabéticamente.
@@ -39,10 +52,19 @@ def pregunta_02():
     ]
 
     """
-    return
+    #Obtengo la columina 1
+    column_1 = [line[0] for line in data]
+    #Cuento por cada elemento unico la cantidad
+    diccionario = dict((x,column_1.count(x)) for x in set(column_1))
+    #Ordeno diccionario
+    diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    #Convierto a tuplas
+    lista = [(k,v) for k,v in diccionario.items()]
+    return lista
 
 
 def pregunta_03():
+    data = read_file()
     """
     Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
     de tuplas (letra, suma) ordendas alfabeticamente.
@@ -57,10 +79,20 @@ def pregunta_03():
     ]
 
     """
-    return
+    #Obtengo la columina 1
+    column_1 = [line[0] for line in data]
+    diccionario = dict((x,0) for x in set(column_1))
+    #sumar en diccionario los valores de la columna 2
+    [diccionario.update({line[0]:diccionario.get(line[0],0) + int(line[1])}) for line in data]
+    #Ordeno diccionario
+    diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    #Convierto a tuplas
+    lista = [(k,v) for k,v in diccionario.items()]
+    return lista
 
 
 def pregunta_04():
+    data = read_file()
     """
     La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
     registros por cada mes, tal como se muestra a continuación.
@@ -82,10 +114,18 @@ def pregunta_04():
     ]
 
     """
-    return
+    #Obtengo la columina 3, dividimos por signo '-', obtenemos meses
+    column_3 = [line[2].split('-')[1] for line in data]
+    diccionario = dict((x,column_3.count(x)) for x in set(column_3))
+    #Ordeno diccionario
+    diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    #Convierto a tuplas
+    lista = [(k,v) for k,v in diccionario.items()]
+    return lista
 
 
 def pregunta_05():
+    data = read_file()
     """
     Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
     letra de la columa 1.
@@ -100,10 +140,18 @@ def pregunta_05():
     ]
 
     """
-    return
+    #Obtengo la columina 1
+    column_1 = [line[0] for line in data]
+    set_unicos = sorted(set(column_1))
+    lista_tupla = []
+    for unico in set_unicos:
+        temp_lista = [line[1] for line in data if line[0] == unico]
+        lista_tupla.append((unico,int(max(temp_lista)),int(min(temp_lista))))
+    return lista_tupla
 
 
 def pregunta_06():
+    data = read_file()
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
@@ -125,10 +173,14 @@ def pregunta_06():
     ]
 
     """
-    return
+    data = [line[4] for line in data]
+    data = [line.split(',') for line in data]
+    data = [line for line in data]
+    return data
 
 
 def pregunta_07():
+    data = read_file()
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
     valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
@@ -149,10 +201,20 @@ def pregunta_07():
     ]
 
     """
-    return
+    #Obtengo la columina 2
+    column_2 = [line[1] for line in data]
+    diccionario = dict((int(x),[]) for x in set(column_2))
+    #sumar en diccionario los valores de la columna 2
+    [diccionario.update({int(line[1]):diccionario.get(int(line[1]),0) + [line[0]]}) for line in data]
+    #Ordeno diccionario
+    diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    #Convierto a tuplas
+    lista = [(k,v) for k,v in diccionario.items()]
+    return lista
 
 
 def pregunta_08():
+    data = read_file()
     """
     Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
     de la segunda columna; la segunda parte de la tupla es una lista con las letras
@@ -174,10 +236,21 @@ def pregunta_08():
     ]
 
     """
-    return
+    #Obtengo la columina 2
+    column_2 = [line[1] for line in data]
+    diccionario = dict((int(x),set()) for x in set(column_2))
+    #sumar en diccionario los valores de la columna 2
+    [diccionario.update({int(line[1]):diccionario.get(int(line[1]),0).union(set(line[0]))}) for line in data]
+    #Ordeno diccionario
+    diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0])) #diccionario.update({key:sorted(diccionario.get(key,0))})
+    [diccionario.update({key:sorted(diccionario.get(key,0))}) for key in diccionario]
+    #Convierto a tuplas
+    lista = [(k,v) for k,v in diccionario.items()]
+    return lista
 
 
 def pregunta_09():
+    data = read_file()
     """
     Retorne un diccionario que contenga la cantidad de registros en que aparece cada
     clave de la columna 5.
@@ -197,10 +270,18 @@ def pregunta_09():
     }
 
     """
-    return
+    data = [line[4] for line in data]
+    data = [re.findall(r"\w{3}",line) for line in data]
+    data = [x for line in data for x in line]
+    #Cuento por cada elemento unico la cantidad
+    diccionario = dict((x,data.count(x)) for x in set(data))
+    #Ordeno diccionario
+    diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    return diccionario
 
 
 def pregunta_10():
+    data = read_file()
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
     cantidad de elementos de las columnas 4 y 5.
@@ -218,10 +299,13 @@ def pregunta_10():
 
 
     """
-    return
+    data = [line[:3]+[line[3].split(',')]+[line[4].split(',')] for line in data]
+    data = [(line[0],len(line[3]),len(line[4]))for line in data]
+    return data
 
 
 def pregunta_11():
+    data = read_file()
     """
     Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
     columna 4, ordenadas alfabeticamente.
@@ -239,10 +323,18 @@ def pregunta_11():
 
 
     """
-    return
+    data_aux = [line[1:2]+[line[3].split(',')] for line in data]
+    data_aux_2 = [x for line in data_aux for x in line[1]]
+    #Cuento por cada elemento unico la cantidad
+    diccionario = dict((x,0) for x in set(data_aux_2))
+    [diccionario.update({key:diccionario.get(key,0)+int(line[0])}) for line in data_aux for key in line[1]]
+    #Ordeno diccionario
+    diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0]))
+    return diccionario
 
 
 def pregunta_12():
+    data = read_file()
     """
     Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
     los valores de la columna 5 sobre todo el archivo.
@@ -257,4 +349,12 @@ def pregunta_12():
     }
 
     """
-    return
+    #Obtengo la columina 1
+    column_1 = [line[0] for line in data]
+    diccionario = dict((x,0) for x in set(column_1))
+    data_aux = [[line[0]]+[line[4]] for line in data]
+    data_aux = [[line[0]]+[re.findall(r"\d+",line[1])] for line in data_aux]
+    data_aux = [[line[0]]+ [int(x)] for line in data_aux for x in line[1]]
+    [diccionario.update({line[0]:diccionario.get(line[0],0)+int(line[1])}) for line in data_aux]
+
+    return diccionario
