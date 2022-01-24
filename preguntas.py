@@ -12,22 +12,22 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
 import re
-with open("./data.csv", "r") as file:
-    data = file.readlines()
+#with open("./data.csv", "r") as file:
+    #data = file.readlines()
 
-data = [line.replace("\n", "") for line in data]
+#data = [line.replace("\n", "") for line in data]
 
-data = [line.split("\t") for line in data]
+#data = [line.split("\t") for line in data]
 
 
 def read_file():
-    data = open(".\data.csv", "r").readlines()
+    data = open("./data.csv", "r").readlines()
     data = [line.replace("\n", "") for line in data]
     data = [line.split("\t") for line in data]
     return data
 
 def pregunta_01():
-    #data = read_file()
+    data = read_file()
     """
     Retorne la suma de la segunda columna.
 
@@ -41,7 +41,7 @@ def pregunta_01():
 
 
 def pregunta_02():
-    #data = read_file()
+    data = read_file()
     """
     Retorne la cantidad de registros por cada letra de la primera columna como la lista
     de tuplas (letra, cantidad), ordendas alfabéticamente.
@@ -68,7 +68,7 @@ def pregunta_02():
 
 
 def pregunta_03():
-    #data = read_file()
+    data = read_file()
     """
     Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
     de tuplas (letra, suma) ordendas alfabeticamente.
@@ -96,7 +96,7 @@ def pregunta_03():
 
 
 def pregunta_04():
-    #data = read_file()
+    data = read_file()
     """
     La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
     registros por cada mes, tal como se muestra a continuación.
@@ -129,7 +129,7 @@ def pregunta_04():
 
 
 def pregunta_05():
-    #data = read_file()
+    data = read_file()
     """
     Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
     letra de la columa 1.
@@ -155,7 +155,7 @@ def pregunta_05():
 
 
 def pregunta_06():
-    #data = read_file()
+    data = read_file()
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
@@ -190,7 +190,7 @@ def pregunta_06():
     return lista_tupla
 
 def pregunta_07():
-    #data = read_file()
+    data = read_file()
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
     valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
@@ -224,7 +224,7 @@ def pregunta_07():
 
 
 def pregunta_08():
-    #data = read_file()
+    data = read_file()
     """
     Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
     de la segunda columna; la segunda parte de la tupla es una lista con las letras
@@ -260,7 +260,7 @@ def pregunta_08():
 
 
 def pregunta_09():
-    #data = read_file()
+    data = read_file()
     """
     Retorne un diccionario que contenga la cantidad de registros en que aparece cada
     clave de la columna 5.
@@ -291,7 +291,7 @@ def pregunta_09():
 
 
 def pregunta_10():
-    #data = read_file()
+    data = read_file()
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
     cantidad de elementos de las columnas 4 y 5.
@@ -315,7 +315,7 @@ def pregunta_10():
 
 
 def pregunta_11():
-    #data = read_file()
+    data = read_file()
     """
     Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
     columna 4, ordenadas alfabeticamente.
@@ -344,7 +344,7 @@ def pregunta_11():
 
 
 def pregunta_12():
-    #data = read_file()
+    data = read_file()
     """
     Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
     los valores de la columna 5 sobre todo el archivo.
