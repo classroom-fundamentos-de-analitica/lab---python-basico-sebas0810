@@ -67,7 +67,7 @@ def test_05():
 
 
 def test_06():
-    print(preguntas.pregunta_06())
+    #print(preguntas.pregunta_06())
     assert preguntas.pregunta_06() == [
         ("aaa", 1, 9),
         ("bbb", 1, 9),
