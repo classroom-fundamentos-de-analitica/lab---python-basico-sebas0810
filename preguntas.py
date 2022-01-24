@@ -280,11 +280,11 @@ def pregunta_09():
     }
 
     """
-    data = [line[4] for line in data]
-    data = [re.findall(r"\w{3}",line) for line in data]
-    data = [x for line in data for x in line]
+    data_aux = [line[4] for line in data]
+    data_aux = [re.findall(r"\w{3}",line) for line in data_aux]
+    data_aux = [x for line in data_aux for x in line]
     #Cuento por cada elemento unico la cantidad
-    diccionario = dict((x,data.count(x)) for x in set(data))
+    diccionario = dict((x,data_aux.count(x)) for x in set(data_aux))
     #Ordeno diccionario
     diccionario = dict(sorted(diccionario.items(), key=lambda item: item[0]))
     return diccionario
@@ -309,9 +309,9 @@ def pregunta_10():
 
 
     """
-    data = [line[:3]+[line[3].split(',')]+[line[4].split(',')] for line in data]
-    data = [(line[0],len(line[3]),len(line[4]))for line in data]
-    return data
+    data_aux = [line[:3]+[line[3].split(',')]+[line[4].split(',')] for line in data]
+    data_aux = [(line[0],len(line[3]),len(line[4])) for line in data_aux]
+    return data_aux
 
 
 def pregunta_11():
