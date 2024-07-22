@@ -9,9 +9,11 @@ import preguntas
 
 def test_01():
     assert preguntas.pregunta_01() == 214
+    #print(preguntas.pregunta_01())
 
 
 def test_02():
+    
     assert preguntas.pregunta_02() == [
         ("A", 8),
         ("B", 7),
@@ -19,9 +21,13 @@ def test_02():
         ("D", 6),
         ("E", 14),
     ]
+    
+
+    #print(preguntas.pregunta_02())
 
 
 def test_03():
+    #print(preguntas.pregunta_03())
     assert preguntas.pregunta_03() == [
         ("A", 53),
         ("B", 36),
@@ -32,6 +38,7 @@ def test_03():
 
 
 def test_04():
+    #print(preguntas.pregunta_04())
     assert preguntas.pregunta_04() == [
         ("01", 3),
         ("02", 4),
@@ -49,6 +56,7 @@ def test_04():
 
 
 def test_05():
+    #print(preguntas.pregunta_05())
     assert preguntas.pregunta_05() == [
         ("A", 9, 2),
         ("B", 9, 1),
@@ -59,6 +67,7 @@ def test_05():
 
 
 def test_06():
+    #print(preguntas.pregunta_06())
     assert preguntas.pregunta_06() == [
         ("aaa", 1, 9),
         ("bbb", 1, 9),
@@ -74,6 +83,7 @@ def test_06():
 
 
 def test_07():
+    #print(preguntas.pregunta_07())
     assert preguntas.pregunta_07() == [
         (0, ["C"]),
         (1, ["E", "B", "E"]),
@@ -89,6 +99,7 @@ def test_07():
 
 
 def test_08():
+    #print(preguntas.pregunta_08())
     assert preguntas.pregunta_08() == [
         (0, ["C"]),
         (1, ["B", "E"]),
@@ -104,6 +115,7 @@ def test_08():
 
 
 def test_09():
+    #print(preguntas.pregunta_09())
     assert preguntas.pregunta_09() == {
         "aaa": 13,
         "bbb": 16,
@@ -119,6 +131,7 @@ def test_09():
 
 
 def test_10():
+    #print(preguntas.pregunta_10())
     assert preguntas.pregunta_10() == [
         ("E", 3, 5),
         ("A", 3, 4),
@@ -164,6 +177,7 @@ def test_10():
 
 
 def test_11():
+    #print(preguntas.pregunta_11())
     assert preguntas.pregunta_11() == {
         "a": 122,
         "b": 49,
@@ -176,6 +190,7 @@ def test_11():
 
 
 def test_12():
+    #print(preguntas.pregunta_12())
     assert preguntas.pregunta_12() == {"A": 177, "B": 187, "C": 114, "D": 136, "E": 324}
 
 
